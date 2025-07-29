@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 public class DBhelper extends SQLiteOpenHelper {
 
     public DBhelper(@Nullable Context context) {
-        super(context, "a1.db", null, 2);
+        super(context, "a1.db", null, 9);
     }
 
     @Override
@@ -44,24 +44,66 @@ public class DBhelper extends SQLiteOpenHelper {
         user.put("password", "user123");
         user.put("role", "user");
         db.insert("users", null, user);
+
+        String createTableThanhVien = ("CREATE TABLE IF NOT EXISTS ThanhVien (" +
+                "maTV INTEGER PRIMARY KEY AUTOINCREMENT ," +
+                "hoTenTV  TEXT NOT NULL ," +
+                "namSinh TEXT NOT NULL)");
+
+        db.execSQL(createTableThanhVien);
+        db.execSQL("insert into ThanhVien values(0,'Hoàng Thái Thượng','2004')," +
+                                        "(1,'Giang hoàng','2004')," +
+                                    "(2,'Trung huỳnh','2004')"
+
+        );
+
+        String createTableLoaiSach = ("CREATE TABLE IF NOT EXISTS LoaiSach" +
+                "(maLoai INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "tenLoai TEXT NOT NULL)");
+
+        db.execSQL(createTableLoaiSach);
+        db.execSQL("insert into LoaiSach values(0,'CNTT')");
+
+        //tạo bảng sách
+        String createTableSach = ("CREATE TABLE IF NOT EXISTS Sach (" +
+                "maSach INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "maLoai  INTEGER  REFERENCES LoaiSach(maLoai)," +
+                "tenSach TEXT NOT NULL," +
+                "giaThue INTEGER NOT NULL)");
+
+        db.execSQL(createTableSach);
+        db.execSQL("insert into Sach values (0,0,'Android 2',20000)," +
+                "(1,1,'Java',20000)," +
+                "(2,2,'Kolin',20000)");
+
+        //tạo bảng phiếu mượn
+        String createTablePhieuMuon = ("CREATE TABLE IF NOT EXISTS PhieuMuon (" +
+                "maPhieu INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "maTV INTEGER REFERENCES ThanhVien(maTV)," +
+                "maTT TEXT REFERENCES ThuThu(maTT)," +
+                "maSach INTEGER REFERENCES Sach(maSach)," +
+                "ngayMuon DATE NOT NULL," +
+                "traSach INTEGER NOT NULL," +
+                "tienThue INTEGER NOT NULL)");
+
+        db.execSQL(createTablePhieuMuon);
+        db.execSQL("insert into PhieuMuon values(0,0,'TT01',0,'24-09-2023',1,20000)");
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS PhieuMuon");
+        db.execSQL("DROP TABLE IF EXISTS Sach");
+        db.execSQL("DROP TABLE IF EXISTS LoaiSach");
+        db.execSQL("DROP TABLE IF EXISTS ThanhVien");
         db.execSQL("DROP TABLE IF EXISTS mytable");
         db.execSQL("DROP TABLE IF EXISTS users");
         onCreate(db);
     }
 
     // Chèn dữ liệu sản phẩm mẫu
-    public void insertSampleDate() {
-        SQLiteDatabase db = this.getWritableDatabase();
-        String sql = "INSERT INTO mytable " +
-                "(search_image,styleid,brands_filter_facet,price,product_additional_info) VALUES " +
-                "('https://example.com/img1.jpg', 102, 'Adidas', 1490000, 'Giày chạy bộ nam')," +
-                "('https://example.com/img2.jpg', 103, 'Puma', 1290000, 'Giày sneaker nữ')";
-        db.execSQL(sql);
-    }
+
 
     // ✅ Hàm kiểm tra đăng nhập: trả về role nếu đúng, null nếu sai
     public String checkLogin(String username, String password) {

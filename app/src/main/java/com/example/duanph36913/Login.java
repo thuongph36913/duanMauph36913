@@ -40,7 +40,6 @@ public class Login extends AppCompatActivity {
                 String password = edtPassword.getText().toString();
                 String role = dbHelper.checkLogin(username, password);
 
-
                 if (role != null) {
                     Toast.makeText(Login.this, "Login success as " + role, Toast.LENGTH_SHORT).show();
                     if (role.equals("admin")) {

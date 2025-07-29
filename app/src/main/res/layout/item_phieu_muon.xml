@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mã phiếu: "
+                android:textSize="17dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tên thủ thư: "
+                android:textSize="17dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Người mượn: "
+                android:textSize="17dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tên sách: "
+                android:textSize="17dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tiền thuê: "
+                android:textSize="17dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvMaPhieu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:textSize="17dp" />
+            <TextView
+                android:id="@+id/tvTenTT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:textSize="17dp" />
+            <TextView
+                android:id="@+id/tvNguoiM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phong"
+                android:textSize="17dp" />
+            <TextView
+                android:id="@+id/tvTenSachP"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="..."
+                android:textSize="17dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvTienThue"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="20000"
+                android:textSize="17dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvTrangThai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:text="Đã trả"
+                android:textColor="#03A9F4"
+                android:textSize="17dp" />
+
+            <TextView
+                android:id="@+id/tvNgayThue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="18/09/2023"
+                android:textSize="17dp" />
+
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/imgDeletePM"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="55dp"
+            android:src="@drawable/delete" />
+    </LinearLayout>
+</LinearLayout>
