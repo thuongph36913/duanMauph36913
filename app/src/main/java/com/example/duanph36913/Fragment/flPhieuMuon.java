@@ -50,7 +50,7 @@ public class flPhieuMuon extends Fragment {
     spiner_TV spinerTv;
     spinerTT spinerTT;
     sqpnerTS spinerTS;
-    String maTT;
+    int maTT;
     int maTV;
     int maSach,tienThue;
 

@@ -22,13 +22,11 @@ import com.example.duanph36913.Fragment.fl_loaisach;
 import com.example.duanph36913.Fragment.fl_sach;
 import com.example.duanph36913.Fragment.fl_tao_taii_khoan;
 import com.example.duanph36913.Fragment.fl_thanh_vien;
+import com.example.duanph36913.Fragment.fl_topmuon;
 import com.google.android.material.navigation.NavigationView;
 
 public class Admin extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawerLayout;
-
-
-
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,10 +54,10 @@ public class Admin extends AppCompatActivity implements NavigationView.OnNavigat
             getSupportFragmentManager().beginTransaction().replace(R.id.frag_contentA,new fl_loaisach()).commit();
         }else if(item.getItemId() == R.id.nav_SachA){
             getSupportFragmentManager().beginTransaction().replace(R.id.frag_contentA,new fl_sach()).commit();
-        }else if(item.getItemId() == R.id.nav_ThanhVienA){
-            getSupportFragmentManager().beginTransaction().replace(R.id.frag_contentA,new fl_thanh_vien()).commit();
-//        }else if(item.getItemId() == R.id.nav_TopMuonA){
-//            getSupportFragmentManager().beginTransaction().replace(R.id.frag_contentA,new flTopSach()).commit();
+//        }else if(item.getItemId() == R.id.nav_ThanhVienA){
+//            getSupportFragmentManager().beginTransaction().replace(R.id.frag_contentA,new fl_thanh_vien()).commit();
+        }else if(item.getItemId() == R.id.nav_TopMuonA){
+            getSupportFragmentManager().beginTransaction().replace(R.id.frag_contentA,new fl_topmuon()).commit();
         }else if(item.getItemId() == R.id.nav_DoanhThuA){
             getSupportFragmentManager().beginTransaction().replace(R.id.frag_contentA,new fl_doanhthu()).commit();
         }else if(item.getItemId() == R.id.nav_DoiMatKhauA){
@@ -67,9 +65,9 @@ public class Admin extends AppCompatActivity implements NavigationView.OnNavigat
         }else if(item.getItemId() == R.id.nav_ThemThanhVien){
             getSupportFragmentManager().beginTransaction().replace(R.id.frag_contentA,new fl_tao_taii_khoan()).commit();
         }
-//        else if(item.getItemId() == R.id.nav_DangXuatA){
-//            startActivity(new Intent(quan_ly_phieu_muon_Admin.this, dang_nhap.class));
-//        }
+        else if(item.getItemId() == R.id.nav_DangXuatA){
+            startActivity(new Intent(Admin.this, Login.class));
+        }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }

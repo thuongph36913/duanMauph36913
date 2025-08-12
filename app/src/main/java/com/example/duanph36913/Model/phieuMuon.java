@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class phieuMuon {
     private int maPM;
-    private String maTT;
+    private int maTT;
     private int maTV;
     private int maSach;
     private Date ngay;
@@ -14,7 +14,7 @@ public class phieuMuon {
     public phieuMuon() {
     }
 
-    public phieuMuon(int maPM, String maTT, int maTV, int maSach, Date ngay, int traSach, int tienThue) {
+    public phieuMuon(int maPM, int maTT, int maTV, int maSach, Date ngay, int traSach, int tienThue) {
         this.maPM = maPM;
         this.maTT = maTT;
         this.maTV = maTV;
@@ -24,7 +24,7 @@ public class phieuMuon {
         this.tienThue = tienThue;
     }
 
-    public phieuMuon(String maTT, int maTV, int maSach, Date ngay, int traSach, int tienThue) {
+    public phieuMuon(int maTT, int maTV, int maSach, Date ngay, int traSach, int tienThue) {
         this.maTT = maTT;
         this.maTV = maTV;
         this.maSach = maSach;
@@ -41,11 +41,11 @@ public class phieuMuon {
         this.maPM = maPM;
     }
 
-    public String getMaTT() {
+    public int getMaTT() {
         return maTT;
     }
 
-    public void setMaTT(String maTT) {
+    public void setMaTT(int maTT) {
         this.maTT = maTT;
     }
 

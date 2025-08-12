@@ -1,66 +1,104 @@
 package com.example.duanph36913.Fragment;
 
+import android.app.Dialog;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.example.duanph36913.Adapter.adapterThanhVien;
+import com.example.duanph36913.Dao.thanhVienDAO;
+import com.example.duanph36913.Model.thanhVien;
 import com.example.duanph36913.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.textfield.TextInputLayout;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link fl_thanh_vien#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+
+
 public class fl_thanh_vien extends Fragment {
+    RecyclerView rcvTV;
+    FloatingActionButton fltAdd;
+    ArrayList<thanhVien> list;
+    thanhVienDAO tvDAO;
+    adapterThanhVien adapterTV;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public fl_thanh_vien() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment fl_thanh_vien.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static fl_thanh_vien newInstance(String param1, String param2) {
-        fl_thanh_vien fragment = new fl_thanh_vien();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fl_thanh_vien, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_fl_thanh_vien, container, false);
+        rcvTV = view.findViewById(R.id.rcvThanhVien);
+        fltAdd = view.findViewById(R.id.fltAdd);
+        rcvTV.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        tvDAO = new thanhVienDAO(getActivity());
+        list = new ArrayList<>();
+        list = tvDAO.getAll();
+        adapterTV = new adapterThanhVien(getActivity(), list);
+        rcvTV.setAdapter(adapterTV);
+
+        fltAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                add();
+            }
+        });
+        return view;
+    }
+    public void add() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        LayoutInflater inflater = getLayoutInflater();
+        View view = inflater.inflate(R.layout.dialog_add_thanhvien, null);
+        builder.setView(view);
+        Dialog dialog = builder.create();
+        dialog.show();
+
+        EditText edTen = view.findViewById(R.id.edTenTVA);
+        EditText edNam = view.findViewById(R.id.edNamSinh);
+        TextInputLayout checkTen = view.findViewById(R.id.checkTenTV);
+        TextInputLayout checkNam = view.findViewById(R.id.checkNS);
+        Button btnAdd = view.findViewById(R.id.btnAddTV);
+
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String ten = edTen.getText().toString();
+                String nam = edNam.getText().toString();
+                thanhVien thanhVien = new thanhVien(ten, nam);
+                if (ten.isEmpty() || nam.isEmpty()) {
+                    if (ten.equals("")) {
+                        checkTen.setError("Không được để trống");
+                    } else {
+                        checkTen.setError(null);
+                    }
+                    if (nam.equals("")) {
+                        checkNam.setError("Không được để trống");
+                    } else {
+                        checkNam.setError(null);
+                    }
+                } else {
+                    if (tvDAO.insert(thanhVien) > 0) {
+                        list.clear();
+                        list.addAll(tvDAO.getAll());
+                        adapterTV.notifyDataSetChanged();
+                        dialog.dismiss();
+                        Toast.makeText(getActivity(), "Thêm thành công", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getActivity(), "Thêm thành công", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
     }
 }

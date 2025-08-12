@@ -47,7 +47,7 @@ public class adapterPhieuMuon extends RecyclerView.Adapter<adapterPhieuMuon.view
     spiner_TV spinerTv;
     spinerTT spinerTT;
     sqpnerTS spinerTS;
-    String maTT;
+    int maTT;
     int maTV;
     int maSach, tienThue;
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -181,7 +181,7 @@ public class adapterPhieuMuon extends RecyclerView.Adapter<adapterPhieuMuon.view
         if (phieuMuonU.getTraSach() == 1) {
             chkTT.setChecked(true);
         }
-        String getMaTT = phieuMuonU.getMaTT();
+        int getMaTT = phieuMuonU.getMaTT();
         int getMaTV = phieuMuonU.getMaTV();
         int getMaSach = phieuMuonU.getMaSach();
 //        int tien
@@ -194,7 +194,7 @@ public class adapterPhieuMuon extends RecyclerView.Adapter<adapterPhieuMuon.view
         spinerTT = new spinerTT(context, listTT);
         spTT.setAdapter(spinerTT);
         for (int i = 0; i < listTT.size(); i++) {
-           if(listTT.get(i).getMaTT().equals(getMaTT)){
+           if(listTT.get(i).getMaTT() == getMaTT){
                spTT.setSelection(i);
                maTT = getMaTT;
                break;

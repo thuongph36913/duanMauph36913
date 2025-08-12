@@ -68,8 +68,9 @@ public class User extends AppCompatActivity {
                 }else if(item.getItemId() == R.id.nav_DoiMatKhau){
                     getSupportFragmentManager().beginTransaction().replace(R.id.fl_content,new fl_doi_mau_khau()).commit();
                     toolbar.setTitle("Đổi mật khẩu");
-//                }else if(item.getItemId() == R.id.nav_DangXuat){
-////                    startActivity(new Intent(user.this, dang_nhap.class));
+                }else if(item.getItemId() == R.id.nav_DangXuat){
+                    startActivity(new Intent(User.this, Login.class));
+
                 }else if(item.getItemId() == R.id.nav_ThemThanhVien){
                     getSupportFragmentManager().beginTransaction().replace(R.id.fl_content,new fl_tao_taii_khoan()).commit();
                     toolbar.setTitle("Thêm thủ thư");

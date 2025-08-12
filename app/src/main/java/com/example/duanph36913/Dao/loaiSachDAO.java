@@ -29,7 +29,10 @@ public class loaiSachDAO {
     public loaiSach getID(String id){
         String sql = "select * from LoaiSach where maLoai = ?";
         ArrayList<loaiSach> list = getData(sql,id);
-        return list.get(0);
+        if (list != null && !list.isEmpty()) {
+            return list.get(0);
+        }
+        return null;
     }
 
     @SuppressLint("Range")

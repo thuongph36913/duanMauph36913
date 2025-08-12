@@ -48,7 +48,7 @@ public class phieuMuonDAO {
             phieuMuon phieuMuon = new phieuMuon();
             phieuMuon.setMaPM(Integer.parseInt(cursor.getString(cursor.getColumnIndex("maPhieu"))));
             phieuMuon.setMaTV(Integer.parseInt(cursor.getString(cursor.getColumnIndex("maTV"))));
-            phieuMuon.setMaTT(cursor.getString(cursor.getColumnIndex("maTT")));
+            phieuMuon.setMaTT(cursor.getInt(cursor.getColumnIndex("maTT")));
             phieuMuon.setMaSach(Integer.parseInt(cursor.getString(cursor.getColumnIndex("maSach"))));
             try {
                 phieuMuon.setNgay(dateFormat.parse(cursor.getString(cursor.getColumnIndex("ngayMuon"))));
