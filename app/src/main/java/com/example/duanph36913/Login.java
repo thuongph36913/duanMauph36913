@@ -20,7 +20,7 @@ public class Login extends AppCompatActivity {
 
 
     EditText edtUsername, edtPassword;
-    Button btnLogin;
+    Button btnLogin,btn_thoat;
     DBhelper dbHelper;
 
     @Override
@@ -28,10 +28,13 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login);
-        edtUsername = findViewById(R.id.edtUsername);
-        edtPassword = findViewById(R.id.edtPassword);
-        btnLogin = findViewById(R.id.btnLogin);
+        edtUsername = findViewById(R.id.edTenDN);
+        edtPassword = findViewById(R.id.edMatKhau);
+        btnLogin = findViewById(R.id.btnDangNhap);
+        btn_thoat=findViewById(R.id.btnHuyDN);
         dbHelper = new DBhelper(this);
+
+
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,8 +61,16 @@ public class Login extends AppCompatActivity {
 
             }
         });
-
+btn_thoat.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        edtUsername.setText("");
+        edtPassword.setText("");
     }
+});
+    }
+
+
     public void remember(String tenDN, String matKhau, boolean rem) {
         SharedPreferences s = getSharedPreferences("Acc.txt", MODE_PRIVATE);
         SharedPreferences.Editor e = s.edit();//tạo một đối tượng Edit để chỉnh sửa
@@ -68,4 +79,5 @@ public class Login extends AppCompatActivity {
         e.putBoolean("Rem", rem);
         e.apply();//áp dụng thay đổi
     }
+
 }

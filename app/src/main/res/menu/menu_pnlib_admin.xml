@@ -14,6 +14,10 @@
         android:id="@+id/nav_SachA"
         android:icon="@drawable/book_icon"
         android:title="Quản lý sách" />
+    <item
+        android:id="@+id/nav_ThanhVienA"
+        android:icon="@drawable/audience"
+        android:title="Quản lý Thành Viên" />
 
     <group android:checkableBehavior="single">
         <item android:title="Thống kê">

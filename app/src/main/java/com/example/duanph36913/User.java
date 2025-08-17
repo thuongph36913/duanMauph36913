@@ -81,28 +81,7 @@ public class User extends AppCompatActivity {
         });
     }
 
-//    @Override
-//    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//        if(item.getItemId() == R.id.nav_PhieuMuon){
-//            getSupportFragmentManager().beginTransaction().replace(R.id.fl_content,new flPhieuMuon()).commit();
-//        }else if(item.getItemId() == R.id.nav_LoaiSach){
-//            getSupportFragmentManager().beginTransaction().replace(R.id.fl_content,new flLoaiSach()).commit();
-//        }else if(item.getItemId() == R.id.nav_Sach){
-//            getSupportFragmentManager().beginTransaction().replace(R.id.fl_content,new flSach()).commit();
-//        }else if(item.getItemId() == R.id.nav_ThanhVien){
-//            getSupportFragmentManager().beginTransaction().replace(R.id.fl_content,new flThanhVien()).commit();
-//        }else if(item.getItemId() == R.id.nav_TopMuon){
-//            getSupportFragmentManager().beginTransaction().replace(R.id.fl_content,new flTopSach()).commit();
-//        }else if(item.getItemId() == R.id.nav_DoanhThu){
-//            getSupportFragmentManager().beginTransaction().replace(R.id.fl_content,new flDoanhThu()).commit();
-//        }else if(item.getItemId() == R.id.nav_DoiMatKhau){
-//            getSupportFragmentManager().beginTransaction().replace(R.id.fl_content,new flDoiMatKhau()).commit();
-//        }else if(item.getItemId() == R.id.nav_DangXuat){
-//            startActivity(new Intent(quanLyPhieuMuon.this, dang_nhap.class));
-//        }
-//        drawerLayout.closeDrawer(GravityCompat.START);
-//        return true;
-//    }
+
 
     @Override
     public void onBackPressed() {

@@ -54,8 +54,8 @@ public class Admin extends AppCompatActivity implements NavigationView.OnNavigat
             getSupportFragmentManager().beginTransaction().replace(R.id.frag_contentA,new fl_loaisach()).commit();
         }else if(item.getItemId() == R.id.nav_SachA){
             getSupportFragmentManager().beginTransaction().replace(R.id.frag_contentA,new fl_sach()).commit();
-//        }else if(item.getItemId() == R.id.nav_ThanhVienA){
-//            getSupportFragmentManager().beginTransaction().replace(R.id.frag_contentA,new fl_thanh_vien()).commit();
+        }else if(item.getItemId() == R.id.nav_ThanhVienA){
+            getSupportFragmentManager().beginTransaction().replace(R.id.frag_contentA,new fl_thanh_vien()).commit();
         }else if(item.getItemId() == R.id.nav_TopMuonA){
             getSupportFragmentManager().beginTransaction().replace(R.id.frag_contentA,new fl_topmuon()).commit();
         }else if(item.getItemId() == R.id.nav_DoanhThuA){
