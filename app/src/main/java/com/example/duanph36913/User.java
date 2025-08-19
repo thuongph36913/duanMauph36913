@@ -23,6 +23,7 @@ import com.example.duanph36913.Fragment.fl_doi_mau_khau;
 import com.example.duanph36913.Fragment.fl_loaisach;
 import com.example.duanph36913.Fragment.fl_sach;
 import com.example.duanph36913.Fragment.fl_tao_taii_khoan;
+import com.example.duanph36913.Fragment.fl_topmuon;
 import com.google.android.material.navigation.NavigationView;
 
 public class User extends AppCompatActivity {
@@ -65,9 +66,12 @@ public class User extends AppCompatActivity {
                     getSupportFragmentManager().beginTransaction().replace(R.id.fl_content,new fl_sach()).commit();
                     toolbar.setTitle("Quản lý sách");
 //
+                }else if(item.getItemId() == R.id.nav_TopMuon) {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, new fl_topmuon()).commit();
+                 toolbar.setTitle("Top mượn sách ");
                 }else if(item.getItemId() == R.id.nav_DoiMatKhau){
                     getSupportFragmentManager().beginTransaction().replace(R.id.fl_content,new fl_doi_mau_khau()).commit();
-                    toolbar.setTitle("Đổi mật khẩu");
+                    toolbar.setTitle("Đổi mật khẩu user");
                 }else if(item.getItemId() == R.id.nav_DangXuat){
                     startActivity(new Intent(User.this, Login.class));
 

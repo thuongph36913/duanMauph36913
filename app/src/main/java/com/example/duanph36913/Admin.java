@@ -4,15 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import androidx.activity.EdgeToEdge;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.graphics.Insets;
+
 import androidx.core.view.GravityCompat;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.duanph36913.Fragment.flPhieuMuon;
@@ -45,25 +44,34 @@ public class Admin extends AppCompatActivity implements NavigationView.OnNavigat
         if(savedInstanceState == null){
             getSupportFragmentManager().beginTransaction().replace(R.id.frag_contentA,new flPhieuMuon()).commit();
             navigationView.setCheckedItem(R.id.nav_PhieuMuonA);
+            getSupportActionBar().setTitle(" Quản lý Phiếu mượn");
         }
     }
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == R.id.nav_PhieuMuonA){
             getSupportFragmentManager().beginTransaction().replace(R.id.frag_contentA,new flPhieuMuon()).commit();
+            getSupportActionBar().setTitle(" Quản lý Phiếu mượn");
         }else if(item.getItemId() == R.id.nav_LoaiSachA){
             getSupportFragmentManager().beginTransaction().replace(R.id.frag_contentA,new fl_loaisach()).commit();
+            getSupportActionBar().setTitle("Quản lý Loại sách");
         }else if(item.getItemId() == R.id.nav_SachA){
             getSupportFragmentManager().beginTransaction().replace(R.id.frag_contentA,new fl_sach()).commit();
+            getSupportActionBar().setTitle("Quản lý Sách");
         }else if(item.getItemId() == R.id.nav_ThanhVienA){
             getSupportFragmentManager().beginTransaction().replace(R.id.frag_contentA,new fl_thanh_vien()).commit();
+            getSupportActionBar().setTitle("Quản lý Thành viên");
         }else if(item.getItemId() == R.id.nav_TopMuonA){
             getSupportFragmentManager().beginTransaction().replace(R.id.frag_contentA,new fl_topmuon()).commit();
+            getSupportActionBar().setTitle("Top mượn sách ");
         }else if(item.getItemId() == R.id.nav_DoanhThuA){
             getSupportFragmentManager().beginTransaction().replace(R.id.frag_contentA,new fl_doanhthu()).commit();
+            getSupportActionBar().setTitle("Doanh Thu");
         }else if(item.getItemId() == R.id.nav_DoiMatKhauA){
             getSupportFragmentManager().beginTransaction().replace(R.id.frag_contentA,new fl_doi_mau_khau()).commit();
+            getSupportActionBar().setTitle("Đổi mật khẩu admin");
         }else if(item.getItemId() == R.id.nav_ThemThanhVien){
             getSupportFragmentManager().beginTransaction().replace(R.id.frag_contentA,new fl_tao_taii_khoan()).commit();
+            getSupportActionBar().setTitle("Thêm thành viên");
         }
         else if(item.getItemId() == R.id.nav_DangXuatA){
             startActivity(new Intent(Admin.this, Login.class));
